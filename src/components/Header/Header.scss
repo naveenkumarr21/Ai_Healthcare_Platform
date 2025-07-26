@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  background-color: $white;
+  box-shadow: $shadow-sm;
+  padding: $spacing-medium 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: $spacing-large;
+
+    a {
+      color: $dark-color;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .auth-buttons {
+    display: flex;
+    gap: $spacing-medium;
+
+    .login-btn {
+      @include button-style;
+      background-color: transparent;
+      color: $primary-color;
+      border: 1px solid $primary-color;
+    }
+
+    .register-btn {
+      @include primary-button;
+    }
+  }
+}

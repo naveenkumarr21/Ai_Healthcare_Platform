@@ -1,0 +1,148 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.login-container {
+  @include flex-center;
+  min-height: 80vh;
+  padding: $spacing-large;
+
+  .login-card {
+    @include card-style;
+    width: 100%;
+    max-width: 450px;
+    padding: $spacing-xlarge;
+    text-align: center;
+
+    h1 {
+      color: $primary-color;
+      margin-bottom: $spacing-small;
+    }
+
+    p {
+      color: rgba($dark-color, 0.7);
+      margin-bottom: $spacing-large;
+    }
+
+    .form-group {
+      margin-bottom: $spacing-medium;
+      text-align: left;
+
+      label {
+        display: block;
+        margin-bottom: $spacing-small;
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: $spacing-medium;
+        border: 1px solid rgba($dark-color, 0.1);
+        border-radius: 4px;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-large;
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+
+        input {
+          margin-right: $spacing-small;
+        }
+
+        label {
+          font-size: 0.9rem;
+          color: rgba($dark-color, 0.7);
+          cursor: pointer;
+        }
+      }
+
+      .forgot-password {
+        font-size: 0.9rem;
+        color: $primary-color;
+      }
+    }
+
+    .login-btn {
+      @include primary-button;
+      width: 100%;
+      padding: $spacing-medium;
+      margin-bottom: $spacing-large;
+      font-size: 1.1rem;
+    }
+
+    .social-login {
+      margin-bottom: $spacing-large;
+
+      p {
+        position: relative;
+        margin-bottom: $spacing-large;
+        color: rgba($dark-color, 0.5);
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          width: 30%;
+          height: 1px;
+          background-color: rgba($dark-color, 0.1);
+        }
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          right: 0;
+        }
+      }
+
+      .social-buttons {
+        display: flex;
+        gap: $spacing-medium;
+
+        button {
+          @include button-style;
+          flex: 1;
+          padding: $spacing-medium;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 500;
+
+          &.google-btn {
+            background-color: #fff;
+            color: $dark-color;
+            border: 1px solid rgba($dark-color, 0.1);
+          }
+
+          &.facebook-btn {
+            background-color: #1877f2;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .signup-link {
+      font-size: 0.9rem;
+      color: rgba($dark-color, 0.7);
+
+      a {
+        color: $primary-color;
+        font-weight: 500;
+      }
+    }
+  }
+}

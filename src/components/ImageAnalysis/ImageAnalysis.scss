@@ -1,0 +1,274 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.image-analysis {
+  h1 {
+    color: $primary-color;
+    margin-bottom: $spacing-small;
+  }
+
+  p {
+    margin-bottom: $spacing-large;
+    color: rgba($dark-color, 0.7);
+  }
+
+  .analysis-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-large;
+    margin-bottom: $spacing-large;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .upload-section {
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    .upload-box {
+      @include card-style;
+      height: 300px;
+      margin-bottom: $spacing-medium;
+      @include flex-center;
+      flex-direction: column;
+
+      .image-preview {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        .image-actions {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba($dark-color, 0.7);
+          padding: $spacing-medium;
+          display: flex;
+          gap: $spacing-medium;
+
+          button {
+            @include button-style;
+            flex: 1;
+            padding: $spacing-small;
+
+            &.analyze-btn {
+              @include primary-button;
+            }
+
+            &.cancel-btn {
+              background-color: $light-color;
+              color: $dark-color;
+            }
+          }
+        }
+      }
+
+      .upload-prompt {
+        @include flex-center;
+        flex-direction: column;
+        cursor: pointer;
+        text-align: center;
+        padding: $spacing-large;
+
+        .upload-icon {
+          font-size: 3rem;
+          color: $primary-color;
+          margin-bottom: $spacing-medium;
+        }
+
+        .formats {
+          font-size: 0.8rem;
+          color: rgba($dark-color, 0.5);
+          margin-top: $spacing-small;
+        }
+      }
+    }
+
+    .analysis-result {
+      h3 {
+        margin-bottom: $spacing-medium;
+      }
+
+      .result-card {
+        @include card-style;
+        padding: $spacing-large;
+
+        &.high {
+          border-left: 4px solid $danger-color;
+        }
+
+        &.moderate {
+          border-left: 4px solid $warning-color;
+        }
+
+        &.low {
+          border-left: 4px solid $secondary-color;
+        }
+
+        .result-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: $spacing-medium;
+
+          h4 {
+            color: $dark-color;
+          }
+
+          .confidence-badge {
+            padding: $spacing-small $spacing-medium;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            background-color: rgba($primary-color, 0.1);
+            color: $primary-color;
+          }
+        }
+
+        .result-details {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: $spacing-large;
+          margin-bottom: $spacing-large;
+
+          @media (max-width: $breakpoint-sm) {
+            grid-template-columns: 1fr;
+          }
+
+          h5 {
+            margin-bottom: $spacing-small;
+            color: $primary-color;
+          }
+
+          ul {
+            list-style-type: disc;
+            padding-left: $spacing-medium;
+
+            li {
+              margin-bottom: $spacing-small;
+            }
+          }
+        }
+
+        .result-actions {
+          display: flex;
+          gap: $spacing-medium;
+
+          @media (max-width: $breakpoint-sm) {
+            flex-direction: column;
+          }
+
+          button {
+            @include button-style;
+            flex: 1;
+            padding: $spacing-medium;
+
+            &.primary-btn {
+              @include primary-button;
+            }
+
+            &.secondary-btn {
+              @include secondary-button;
+            }
+
+            &.outline-btn {
+              background-color: transparent;
+              border: 1px solid $primary-color;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .history-section {
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    .analyses-list {
+      display: grid;
+      gap: $spacing-medium;
+
+      .analysis-card {
+        @include card-style;
+        display: flex;
+        gap: $spacing-medium;
+        padding: $spacing-medium;
+
+        .analysis-image {
+          width: 100px;
+          height: 100px;
+          background-color: $light-color;
+          @include flex-center;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+
+        .analysis-info {
+          flex: 1;
+
+          h4 {
+            margin-bottom: $spacing-small;
+          }
+
+          .date {
+            font-size: 0.8rem;
+            color: rgba($dark-color, 0.5);
+            margin-bottom: $spacing-small;
+          }
+
+          .result {
+            font-size: 0.9rem;
+            margin-bottom: $spacing-small;
+          }
+
+          .view-btn {
+            @include button-style;
+            padding: $spacing-small $spacing-medium;
+            background-color: transparent;
+            color: $primary-color;
+            border: 1px solid $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .info-section {
+    @include card-style;
+    padding: $spacing-large;
+
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    p {
+      margin-bottom: $spacing-medium;
+    }
+
+    ul {
+      margin-bottom: $spacing-medium;
+      padding-left: $spacing-medium;
+    }
+
+    .disclaimer {
+      font-style: italic;
+      color: $danger-color;
+    }
+  }
+}

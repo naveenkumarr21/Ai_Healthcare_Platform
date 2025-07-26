@@ -1,0 +1,204 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.symptom-checker {
+  h1 {
+    color: $primary-color;
+    margin-bottom: $spacing-small;
+  }
+
+  p {
+    margin-bottom: $spacing-large;
+    color: rgba($dark-color, 0.7);
+  }
+
+  .checker-container {
+    display: grid;
+    gap: $spacing-large;
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .symptom-form {
+    @include card-style;
+    padding: $spacing-large;
+
+    .form-group {
+      margin-bottom: $spacing-medium;
+
+      label {
+        display: block;
+        margin-bottom: $spacing-small;
+        font-weight: 500;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 150px;
+        padding: $spacing-small;
+        border: 1px solid rgba($dark-color, 0.1);
+        border-radius: 4px;
+        font-family: $font-primary;
+        resize: vertical;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    .additional-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-medium;
+
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 1fr;
+      }
+
+      div {
+        label {
+          display: block;
+          margin-bottom: $spacing-small;
+        }
+
+        select {
+          width: 100%;
+          padding: $spacing-small;
+          border: 1px solid rgba($dark-color, 0.1);
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .submit-btn {
+      @include primary-button;
+      width: 100%;
+      padding: $spacing-medium;
+      margin-top: $spacing-medium;
+      font-size: 1.1rem;
+    }
+  }
+
+  .results-container {
+    @include card-style;
+    padding: $spacing-large;
+
+    h2 {
+      color: $primary-color;
+      margin-bottom: $spacing-medium;
+    }
+
+    .severity-indicator {
+      margin-bottom: $spacing-large;
+
+      span {
+        padding: $spacing-small $spacing-medium;
+        border-radius: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+
+        &.severity-mild {
+          background-color: rgba($secondary-color, 0.1);
+          color: $secondary-color;
+        }
+
+        &.severity-moderate {
+          background-color: rgba($warning-color, 0.1);
+          color: $warning-color;
+        }
+
+        &.severity-severe {
+          background-color: rgba($danger-color, 0.1);
+          color: $danger-color;
+        }
+      }
+    }
+
+    .possible-conditions {
+      margin-bottom: $spacing-large;
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: $spacing-medium;
+      }
+
+      .condition {
+        margin-bottom: $spacing-medium;
+        padding-bottom: $spacing-medium;
+        border-bottom: 1px solid rgba($dark-color, 0.1);
+
+        &:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+
+        .condition-name {
+          font-weight: bold;
+          margin-bottom: $spacing-small;
+
+          .probability {
+            float: right;
+            color: $primary-color;
+          }
+        }
+
+        .condition-description {
+          color: rgba($dark-color, 0.7);
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .recommended-actions {
+      margin-bottom: $spacing-large;
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: $spacing-medium;
+      }
+
+      ul {
+        list-style-type: disc;
+        padding-left: $spacing-medium;
+
+        li {
+          margin-bottom: $spacing-small;
+        }
+      }
+    }
+
+    .follow-up {
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: $spacing-medium;
+      }
+
+      p {
+        margin-bottom: $spacing-medium;
+      }
+
+      button {
+        @include button-style;
+        width: 100%;
+        padding: $spacing-medium;
+        margin-bottom: $spacing-small;
+
+        &.secondary-btn {
+          @include secondary-button;
+        }
+
+        &.outline-btn {
+          background-color: transparent;
+          border: 1px solid $primary-color;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

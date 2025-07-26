@@ -1,0 +1,415 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.telemedicine {
+  h1 {
+    color: $primary-color;
+    margin-bottom: $spacing-medium;
+  }
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid rgba($dark-color, 0.1);
+    margin-bottom: $spacing-large;
+
+    button {
+      padding: $spacing-medium $spacing-large;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-weight: 500;
+      cursor: pointer;
+      color: rgba($dark-color, 0.7);
+      transition: all 0.3s ease;
+
+      &.active {
+        color: $primary-color;
+        border-bottom-color: $primary-color;
+      }
+
+      &:hover:not(.active) {
+        color: $dark-color;
+      }
+    }
+  }
+
+  .tab-content {
+    margin-bottom: $spacing-xlarge;
+  }
+
+  .appointments-list {
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .appointment-card {
+      @include card-style;
+      padding: $spacing-medium;
+      margin-bottom: $spacing-medium;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .appointment-info {
+        h3 {
+          margin-bottom: $spacing-small;
+        }
+
+        p {
+          margin-bottom: $spacing-small;
+          color: rgba($dark-color, 0.7);
+        }
+
+        .appointment-notes {
+          margin-top: $spacing-medium;
+          padding-top: $spacing-medium;
+          border-top: 1px solid rgba($dark-color, 0.1);
+
+          h4 {
+            font-size: 1rem;
+            margin-bottom: $spacing-small;
+          }
+        }
+      }
+
+      .appointment-actions {
+        display: flex;
+        gap: $spacing-small;
+
+        @media (max-width: $breakpoint-sm) {
+          margin-top: $spacing-medium;
+          width: 100%;
+        }
+
+        button {
+          @include button-style;
+          padding: $spacing-small $spacing-medium;
+          white-space: nowrap;
+
+          &.start-call-btn {
+            @include primary-button;
+          }
+
+          &.reschedule-btn {
+            background-color: $light-color;
+            color: $dark-color;
+          }
+
+          &.cancel-btn {
+            background-color: transparent;
+            color: $danger-color;
+            border: 1px solid $danger-color;
+          }
+        }
+      }
+    }
+
+    .new-appointment-btn {
+      @include secondary-button;
+      padding: $spacing-medium;
+      width: 100%;
+      margin-top: $spacing-medium;
+    }
+  }
+
+  .doctors-list {
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    .search-filter {
+      display: flex;
+      gap: $spacing-medium;
+      margin-bottom: $spacing-large;
+
+      @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+      }
+
+      input {
+        flex: 1;
+        padding: $spacing-medium;
+        border: 1px solid rgba($dark-color, 0.1);
+        border-radius: 4px;
+      }
+
+      select {
+        padding: $spacing-medium;
+        border: 1px solid rgba($dark-color, 0.1);
+        border-radius: 4px;
+        min-width: 200px;
+      }
+    }
+
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: $spacing-medium;
+
+      .doctor-card {
+        @include card-style;
+        overflow: hidden;
+
+        .doctor-image {
+          position: relative;
+          height: 200px;
+          background-color: $light-color;
+          @include flex-center;
+
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .availability-badge {
+            position: absolute;
+            bottom: $spacing-medium;
+            left: $spacing-medium;
+            background-color: $secondary-color;
+            color: $white;
+            padding: $spacing-small $spacing-medium;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+          }
+        }
+
+        .doctor-info {
+          padding: $spacing-medium;
+
+          h3 {
+            margin-bottom: $spacing-small;
+          }
+
+          .specialty {
+            color: rgba($dark-color, 0.7);
+            margin-bottom: $spacing-small;
+          }
+
+          .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: $spacing-medium;
+
+            .stars {
+              color: $warning-color;
+              margin-right: $spacing-small;
+            }
+
+            .rating-value {
+              font-weight: bold;
+            }
+          }
+
+          .doctor-actions {
+            display: flex;
+            gap: $spacing-small;
+
+            button {
+              @include button-style;
+              flex: 1;
+              padding: $spacing-small;
+
+              &.book-btn {
+                @include primary-button;
+              }
+
+              &.call-now-btn {
+                @include secondary-button;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ai-assistant {
+    @include card-style;
+    padding: $spacing-large;
+    margin-top: $spacing-large;
+
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    .chat-container {
+      border: 1px solid rgba($dark-color, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+
+      .chat-messages {
+        height: 300px;
+        padding: $spacing-medium;
+        overflow-y: auto;
+        background-color: $light-color;
+
+        .message {
+          max-width: 80%;
+          padding: $spacing-small $spacing-medium;
+          margin-bottom: $spacing-medium;
+          border-radius: 18px;
+          position: relative;
+
+          &.ai {
+            background-color: $white;
+            border-bottom-left-radius: 4px;
+            margin-right: auto;
+          }
+
+          &.user {
+            background-color: $primary-color;
+            color: $white;
+            border-bottom-right-radius: 4px;
+            margin-left: auto;
+          }
+        }
+      }
+
+      .chat-input {
+        display: flex;
+        border-top: 1px solid rgba($dark-color, 0.1);
+
+        input {
+          flex: 1;
+          padding: $spacing-medium;
+          border: none;
+          outline: none;
+        }
+
+        button {
+          @include secondary-button;
+          padding: $spacing-medium $spacing-large;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+
+  .video-call {
+    .call-header {
+      text-align: center;
+      margin-bottom: $spacing-large;
+
+      h2 {
+        margin-bottom: $spacing-small;
+      }
+
+      p {
+        color: rgba($dark-color, 0.7);
+      }
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-medium;
+      margin-bottom: $spacing-large;
+
+      @media (min-width: $breakpoint-md) {
+        flex-direction: row;
+      }
+
+      .remote-video {
+        flex: 3;
+        background-color: $dark-color;
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+
+        .video-placeholder {
+          @include flex-center;
+          height: 100%;
+          color: $white;
+
+          .doctor-info {
+            text-align: center;
+
+            img {
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              object-fit: cover;
+              margin-bottom: $spacing-medium;
+            }
+
+            h3 {
+              color: $white;
+              margin-bottom: $spacing-small;
+            }
+
+            p {
+              color: rgba($white, 0.7);
+            }
+          }
+        }
+      }
+
+      .local-video {
+        flex: 1;
+        background-color: rgba($dark-color, 0.5);
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+
+        .video-placeholder {
+          @include flex-center;
+          height: 100%;
+          color: $white;
+        }
+      }
+    }
+
+    .call-controls {
+      @include flex-center;
+      gap: $spacing-medium;
+      margin-bottom: $spacing-large;
+
+      .control-btn {
+        @include flex-center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        background-color: $light-color;
+        color: $dark-color;
+        font-size: 1.2rem;
+
+        &.end-call {
+          background-color: $danger-color;
+          color: $white;
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .call-notes {
+      h3 {
+        margin-bottom: $spacing-medium;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 100px;
+        padding: $spacing-medium;
+        border: 1px solid rgba($dark-color, 0.1);
+        border-radius: 4px;
+        resize: vertical;
+      }
+    }
+  }
+}

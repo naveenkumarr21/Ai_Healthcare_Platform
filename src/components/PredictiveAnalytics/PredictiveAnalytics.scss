@@ -1,0 +1,262 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.predictive-analytics {
+  h1 {
+    color: $primary-color;
+    margin-bottom: $spacing-small;
+  }
+
+  .subtitle {
+    color: rgba($dark-color, 0.7);
+    margin-bottom: $spacing-large;
+  }
+
+  .patient-overview {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-large;
+    margin-bottom: $spacing-large;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+
+    .patient-info {
+      @include card-style;
+      padding: $spacing-large;
+
+      h2 {
+        margin-bottom: $spacing-medium;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-medium;
+
+        @media (max-width: $breakpoint-sm) {
+          grid-template-columns: 1fr;
+        }
+
+        div {
+          label {
+            display: block;
+            color: rgba($dark-color, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: $spacing-small;
+          }
+
+          p {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .risk-score {
+      @include card-style;
+      padding: $spacing-large;
+      text-align: center;
+
+      h2 {
+        margin-bottom: $spacing-medium;
+      }
+
+      .score-display {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto $spacing-medium;
+        @include flex-center;
+        flex-direction: column;
+        font-weight: bold;
+
+        &.high {
+          background-color: rgba($danger-color, 0.1);
+          color: $danger-color;
+          border: 5px solid $danger-color;
+        }
+
+        &.medium {
+          background-color: rgba($warning-color, 0.1);
+          color: $warning-color;
+          border: 5px solid $warning-color;
+        }
+
+        &.low {
+          background-color: rgba($secondary-color, 0.1);
+          color: $secondary-color;
+          border: 5px solid $secondary-color;
+        }
+
+        .score-value {
+          font-size: 2.5rem;
+          line-height: 1;
+        }
+
+        .score-label {
+          font-size: 1rem;
+          text-transform: uppercase;
+        }
+      }
+
+      .score-description {
+        color: rgba($dark-color, 0.7);
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .analytics-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-large;
+    margin-bottom: $spacing-large;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+
+    .risk-factors {
+      @include card-style;
+      padding: $spacing-large;
+
+      h2 {
+        margin-bottom: $spacing-medium;
+      }
+
+      .factors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: $spacing-medium;
+
+        .factor-card {
+          padding: $spacing-medium;
+          border-radius: 4px;
+          background-color: $light-color;
+
+          h3 {
+            font-size: 1rem;
+            margin-bottom: $spacing-small;
+          }
+
+          .factor-value {
+            font-weight: bold;
+            margin-bottom: $spacing-small;
+          }
+
+          .impact-badge {
+            display: inline-block;
+            padding: 0.2rem $spacing-small;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            &.high {
+              background-color: rgba($danger-color, 0.1);
+              color: $danger-color;
+            }
+
+            &.medium {
+              background-color: rgba($warning-color, 0.1);
+              color: $warning-color;
+            }
+
+            &.low {
+              background-color: rgba($info-color, 0.1);
+              color: $info-color;
+            }
+          }
+        }
+      }
+    }
+
+    .trends-visualization {
+      @include card-style;
+      padding: $spacing-large;
+
+      h2 {
+        margin-bottom: $spacing-medium;
+      }
+
+      .chart-container {
+        height: 300px;
+
+        .chart-placeholder {
+          @include flex-center;
+          flex-direction: column;
+          height: 100%;
+          background-color: $light-color;
+          border-radius: 4px;
+          color: rgba($dark-color, 0.5);
+
+          .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            height: 200px;
+            gap: $spacing-medium;
+            margin-top: $spacing-medium;
+
+            .chart-bar-container {
+              @include flex-center;
+              flex-direction: column;
+
+              .chart-bar {
+                width: 30px;
+                background-color: $primary-color;
+                border-radius: 4px 4px 0 0;
+                transition: height 0.5s ease;
+              }
+
+              .chart-label {
+                margin-top: $spacing-small;
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .recommendations {
+    @include card-style;
+    padding: $spacing-large;
+
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: $spacing-medium;
+
+      li {
+        padding: $spacing-small 0;
+        border-bottom: 1px solid rgba($dark-color, 0.1);
+        display: flex;
+        align-items: center;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        input {
+          margin-right: $spacing-small;
+        }
+
+        label {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .generate-plan-btn {
+      @include primary-button;
+      padding: $spacing-medium;
+      width: 100%;
+    }
+  }
+}

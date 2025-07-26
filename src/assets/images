@@ -1,0 +1,9 @@
+This directory is intended to contain image assets used throughout the application. As such, it does not contain any files itself. 
+
+The contents of the directory /src/assets/images are as follows:
+
+- logo.png
+- doctor-avatar.jpg
+- medical-bg.jpg
+
+This directory is intentionally left blank.

@@ -1,0 +1,144 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.dashboard {
+  h1 {
+    margin-bottom: $spacing-large;
+    color: $primary-color;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: $spacing-medium;
+    grid-template-areas: 
+      "overview actions"
+      "activity activity";
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+        "overview"
+        "actions"
+        "activity";
+    }
+  }
+
+  .health-overview {
+    grid-area: overview;
+    @include card-style;
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-medium;
+
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .metric-card {
+      padding: $spacing-medium;
+      border-radius: 4px;
+      background-color: $light-color;
+
+      &.normal {
+        border-left: 4px solid $secondary-color;
+      }
+
+      &.warning {
+        border-left: 4px solid $warning-color;
+      }
+
+      &.danger {
+        border-left: 4px solid $danger-color;
+      }
+
+      h3 {
+        font-size: 1rem;
+        margin-bottom: $spacing-small;
+      }
+
+      p {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 0.2rem $spacing-small;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: rgba($secondary-color, 0.1);
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .quick-actions {
+    grid-area: actions;
+    @include card-style;
+
+    .action-buttons {
+      display: grid;
+      gap: $spacing-medium;
+
+      .action-btn {
+        @include button-style;
+        width: 100%;
+        padding: $spacing-medium;
+        text-align: left;
+
+        &.primary {
+          @include primary-button;
+        }
+
+        &.secondary {
+          @include secondary-button;
+        }
+      }
+    }
+  }
+
+  .recent-activity {
+    grid-area: activity;
+    @include card-style;
+
+    .activity-list {
+      list-style: none;
+
+      .activity-item {
+        padding: $spacing-medium 0;
+        border-bottom: 1px solid rgba($dark-color, 0.1);
+        display: grid;
+        grid-template-columns: 120px 100px 1fr;
+        gap: $spacing-medium;
+
+        @media (max-width: $breakpoint-sm) {
+          grid-template-columns: 1fr;
+          gap: $spacing-small;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .activity-type {
+          font-weight: bold;
+        }
+
+        .activity-date {
+          color: rgba($dark-color, 0.7);
+        }
+
+        .activity-details {
+          color: rgba($dark-color, 0.7);
+        }
+      }
+    }
+  }
+}

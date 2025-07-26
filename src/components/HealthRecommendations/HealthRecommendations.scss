@@ -1,0 +1,243 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.health-recommendations {
+  h1 {
+    color: $primary-color;
+    margin-bottom: $spacing-small;
+  }
+
+  p {
+    margin-bottom: $spacing-large;
+    color: rgba($dark-color, 0.7);
+  }
+
+  .profile-summary {
+    @include card-style;
+    padding: $spacing-large;
+    margin-bottom: $spacing-large;
+
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: $spacing-medium;
+
+      div {
+        label {
+          display: block;
+          color: rgba($dark-color, 0.7);
+          font-size: 0.9rem;
+          margin-bottom: $spacing-small;
+        }
+
+        p {
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+
+        &.full-width {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }
+
+  .recommendations-container {
+    margin-bottom: $spacing-large;
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid rgba($dark-color, 0.1);
+      margin-bottom: $spacing-medium;
+
+      button {
+        padding: $spacing-medium $spacing-large;
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        font-weight: 500;
+        cursor: pointer;
+        color: rgba($dark-color, 0.7);
+        transition: all 0.3s ease;
+
+        &.active {
+          color: $primary-color;
+          border-bottom-color: $primary-color;
+        }
+
+        &:hover:not(.active) {
+          color: $dark-color;
+        }
+      }
+    }
+
+    .tab-content {
+      .plan-card {
+        @include card-style;
+        padding: $spacing-large;
+        margin-bottom: $spacing-medium;
+
+        .plan-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: $spacing-medium;
+
+          h3 {
+            margin-bottom: 0;
+          }
+
+          .plan-rating {
+            display: flex;
+            align-items: center;
+
+            .stars {
+              color: $warning-color;
+              margin-right: $spacing-small;
+            }
+
+            .rating-value {
+              font-weight: bold;
+            }
+          }
+        }
+
+        .plan-description {
+          margin-bottom: $spacing-small;
+        }
+
+        .plan-benefits {
+          margin-bottom: $spacing-medium;
+          font-size: 0.9rem;
+        }
+
+        .meal-plan {
+          margin-bottom: $spacing-medium;
+
+          h4 {
+            margin-bottom: $spacing-medium;
+          }
+
+          .meals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: $spacing-medium;
+
+            .meal-card {
+              padding: $spacing-medium;
+              background-color: $light-color;
+              border-radius: 4px;
+
+              h5 {
+                margin-bottom: $spacing-small;
+                color: $primary-color;
+              }
+            }
+          }
+        }
+
+        .activities {
+          margin-bottom: $spacing-medium;
+
+          h4 {
+            margin-bottom: $spacing-medium;
+          }
+
+          ul {
+            list-style-type: disc;
+            padding-left: $spacing-medium;
+
+            li {
+              margin-bottom: $spacing-small;
+            }
+          }
+        }
+
+        .schedule {
+          margin-bottom: $spacing-medium;
+
+          h4 {
+            margin-bottom: $spacing-small;
+          }
+        }
+
+        .plan-actions {
+          display: flex;
+          gap: $spacing-medium;
+
+          @media (max-width: $breakpoint-sm) {
+            flex-direction: column;
+          }
+
+          button {
+            @include button-style;
+            flex: 1;
+            padding: $spacing-medium;
+
+            &.primary-btn {
+              @include primary-button;
+            }
+
+            &.secondary-btn {
+              @include secondary-button;
+            }
+
+            &.outline-btn {
+              background-color: transparent;
+              border: 1px solid $primary-color;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .progress-tracking {
+    @include card-style;
+    padding: $spacing-large;
+
+    h2 {
+      margin-bottom: $spacing-medium;
+    }
+
+    .tracking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: $spacing-medium;
+
+      .tracking-card {
+        padding: $spacing-medium;
+        background-color: $light-color;
+        border-radius: 4px;
+
+        h3 {
+          margin-bottom: $spacing-medium;
+          color: $primary-color;
+        }
+
+        .progress-chart {
+          height: 150px;
+          margin-bottom: $spacing-medium;
+          background-color: $white;
+          border-radius: 4px;
+          @include flex-center;
+
+          .chart-placeholder {
+            color: rgba($dark-color, 0.5);
+          }
+        }
+
+        p {
+          font-size: 0.9rem;
+          text-align: center;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

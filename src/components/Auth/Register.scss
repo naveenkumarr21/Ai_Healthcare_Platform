@@ -1,0 +1,105 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.register-container {
+  @include flex-center;
+  min-height: 80vh;
+  padding: $spacing-large;
+
+  .register-card {
+    @include card-style;
+    width: 100%;
+    max-width: 500px;
+    padding: $spacing-xlarge;
+    text-align: center;
+
+    h1 {
+      color: $primary-color;
+      margin-bottom: $spacing-small;
+    }
+
+    p {
+      color: rgba($dark-color, 0.7);
+      margin-bottom: $spacing-large;
+    }
+
+    .name-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-medium;
+      margin-bottom: $spacing-medium;
+
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: $spacing-medium;
+      text-align: left;
+
+      label {
+        display: block;
+        margin-bottom: $spacing-small;
+        font-weight: 500;
+      }
+
+      input, select {
+        width: 100%;
+        padding: $spacing-medium;
+        border: 1px solid rgba($dark-color, 0.1);
+        border-radius: 4px;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+
+      .hint {
+        font-size: 0.8rem;
+        color: rgba($dark-color, 0.5);
+        margin-top: $spacing-small;
+        margin-bottom: 0;
+      }
+    }
+
+    .terms-agreement {
+      display: flex;
+      align-items: center;
+      margin-bottom: $spacing-large;
+
+      input {
+        margin-right: $spacing-small;
+      }
+
+      label {
+        font-size: 0.9rem;
+        color: rgba($dark-color, 0.7);
+        cursor: pointer;
+
+        a {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .register-btn {
+      @include primary-button;
+      width: 100%;
+      padding: $spacing-medium;
+      margin-bottom: $spacing-large;
+      font-size: 1.1rem;
+    }
+
+    .login-link {
+      font-size: 0.9rem;
+      color: rgba($dark-color, 0.7);
+
+      a {
+        color: $primary-color;
+        font-weight: 500;
+      }
+    }
+  }
+}

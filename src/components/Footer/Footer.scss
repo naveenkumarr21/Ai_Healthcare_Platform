@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  background-color: $dark-color;
+  color: $light-color;
+  padding: $spacing-large 0;
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-large;
+    margin-bottom: $spacing-large;
+
+    .footer-section {
+      h3, h4 {
+        color: $white;
+        margin-bottom: $spacing-medium;
+      }
+
+      p, li {
+        margin-bottom: $spacing-small;
+        color: rgba($light-color, 0.7);
+      }
+
+      a {
+        color: rgba($light-color, 0.7);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+
+      ul {
+        list-style: none;
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: $spacing-medium;
+    border-top: 1px solid rgba($light-color, 0.1);
+    color: rgba($light-color, 0.7);
+    font-size: 0.9rem;
+  }
+}
